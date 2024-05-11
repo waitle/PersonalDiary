@@ -80,7 +80,7 @@
             android:gravity="center_vertical"
             android:inputType="phone"
             android:maxLines="1"
-            android:hint="01012341234"
+            android:hint="010-1234-1234"
             android:scrollHorizontally="true"
             android:textSize="18sp" />
 
