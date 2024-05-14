@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class DeviceStatus extends AppCompatActivity {
+public class DeviceStatus_View extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -19,7 +19,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/btn_rtnHome_contacts"
+                android:id="@+id/btn_rtnHome_detailContacts"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
@@ -78,7 +78,7 @@
             android:layout_height="50sp"
             android:layout_columnWeight="1.5"
             android:gravity="center_vertical"
-            android:inputType="phone"
+            android:inputType="none"
             android:maxLines="1"
             android:scrollHorizontally="true"
             android:textSize="18sp" />

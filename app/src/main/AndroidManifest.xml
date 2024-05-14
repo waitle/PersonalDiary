@@ -15,19 +15,25 @@
         android:theme="@style/Theme.PersonalDiary"
         tools:targetApi="31">
         <activity
-            android:name=".AuthorInfo"
+            android:name=".AuthorInfo_View"
             android:exported="false" />
         <activity
-            android:name=".DeviceStatus"
+            android:name=".DeviceStatus_View"
             android:exported="false" />
         <activity
-            android:name=".WebSearch"
+            android:name=".WebSearch_View"
             android:exported="false" />
         <activity
-            android:name=".ContactList"
+            android:name=".ContactList_View"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ContactDetail_View"
+            android:exported="false" />
+        <activity
+            android:name=".AddContect_View"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity_View"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
