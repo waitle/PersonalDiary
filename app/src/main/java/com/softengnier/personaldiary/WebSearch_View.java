@@ -35,6 +35,8 @@ public class WebSearch_View extends AppCompatActivity {
         webView = findViewById(R.id.webView_browser);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);
+        webView.loadUrl("http://www.google.com");
+        urlInput.setText("http://www.google.com");
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +55,7 @@ public class WebSearch_View extends AppCompatActivity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-
                 view.loadUrl(request.getUrl().toString());
-
                 return true;
             }
         });

@@ -121,7 +121,7 @@
             android:layout_columnWeight="1.2"
             android:layout_height="50sp"
             android:gravity="center_vertical"
-            android:text="설치한앱/동작중인앱"
+            android:text="동작중인앱/설치한앱"
             android:textSize="18sp"/>
 
         <TextView

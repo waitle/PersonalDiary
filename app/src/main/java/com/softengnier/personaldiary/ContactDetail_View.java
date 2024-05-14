@@ -2,6 +2,7 @@ package com.softengnier.personaldiary;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ public class ContactDetail_View extends AppCompatActivity {
     Button shareContactBtn;
     Button cancelBtn;
     String originalData;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +50,9 @@ public class ContactDetail_View extends AppCompatActivity {
             String companyStr = company.getText().toString();
             String titleStr = title.getText().toString();
             String modifiedData = nameStr + phoneStr + emailStr + companyStr + titleStr;
-            if(modifiedData.equals(originalData)) {
+            if (modifiedData.equals(originalData)) {
                 finish();
-            }else{
+            } else {
                 AlertDialog.Builder msgBuilder = new AlertDialog.Builder(ContactDetail_View.this)
                         .setTitle("경고")
                         .setMessage("수정한 내용이 저장되지 않습니다. 정말로 나가시겠습니까?")
@@ -78,7 +80,7 @@ public class ContactDetail_View extends AppCompatActivity {
             String emailStr = email.getText().toString();
             String companyStr = company.getText().toString();
             String titleStr = title.getText().toString();
-            if(nameStr.isEmpty() || phoneStr.isEmpty()) {
+            if (nameStr.isEmpty() || phoneStr.isEmpty()) {
                 Toast.makeText(this, "이름과 전화번호는 필수입력 필드입니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -109,23 +111,37 @@ public class ContactDetail_View extends AppCompatActivity {
             String companyStr = company.getText().toString();
             String titleStr = title.getText().toString();
             String shareText = "이름: " + nameStr + "\n전화번호: " + phoneStr + "\n이메일: " + emailStr + "\n회사: " + companyStr + "\n직책: " + titleStr;
-            AlertDialog.Builder msgBuilder = new AlertDialog.Builder(ContactDetail_View.this)
-                    .setTitle("연락처 공유")
-                    .setMessage(shareText)
-                    .setPositiveButton("공유", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            // 공유 기능 추가
-                        }
-                    })
-                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
-            AlertDialog msgDlg = msgBuilder.create();
-            msgDlg.show();
+
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+            sendIntent.setType("text/plain");
+            Intent shareIntent = Intent.createChooser(sendIntent, "연락처 공유ㅜ");
+            startActivity(shareIntent);
+//            AlertDialog.Builder msgBuilder = new AlertDialog.Builder(ContactDetail_View.this)
+//                    .setTitle("연락처 공유")
+//                    .setMessage(shareText)
+//                    .setPositiveButton("공유", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            // 공유 기능 추가
+//                            Intent sendIntent = new Intent();
+//                            sendIntent.setAction(Intent.ACTION_SEND);
+//                            sendIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+//                            sendIntent.setType("text/plain");
+//
+//                            Intent shareIntent = Intent.createChooser(sendIntent, null);
+//                            startActivity(shareIntent);
+//                        }
+//                    })
+//                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            dialogInterface.dismiss();
+//                        }
+//                    });
+//            AlertDialog msgDlg = msgBuilder.create();
+//            msgDlg.show();
         });
     }
 }
