@@ -57,8 +57,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/plus"
+        app:srcCompat="@drawable/plus"
+        android:tint="@null"
         android:contentDescription="@string/addContact"
         android:layout_margin="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
