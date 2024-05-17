@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -27,7 +28,7 @@ public class ContactDetail_View extends AppCompatActivity {
         DBModel dbManager = new DBModel(this);
         ContactVO contact = dbManager.getContact(phoneParam);
         EditText name = findViewById(R.id.edit_name);
-        EditText phone = findViewById(R.id.edit_phone);
+        TextView phone = findViewById(R.id.edit_phone);
         EditText email = findViewById(R.id.edit_email);
         EditText company = findViewById(R.id.edit_company);
         EditText title = findViewById(R.id.edit_title);

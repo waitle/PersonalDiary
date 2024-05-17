@@ -70,7 +70,7 @@ public class ContactList_View extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 int result = dbManager.deleteContact(contactListAdapter.mContactList.get(pos).getDetail());
-                                if(result > 0){
+                                if(result >= 0){
                                     Toast.makeText(ContactList_View.this, "연락처가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
                                     contactListAdapter.setContactList(dbManager.getContactList());
                                 }else if(result == -3){
@@ -96,6 +96,11 @@ public class ContactList_View extends AppCompatActivity {
 
 
 
+    }
+
+    protected void onResume() {
+        super.onResume();
+        contactListAdapter.setContactList(dbManager.getContactList());
     }
 
     @Override
