@@ -22,7 +22,7 @@ public class ContactList_View extends AppCompatActivity {
     DBModel dbManager;
     SQLiteDatabase db;
     ImageButton rtnHomeBtn;
-    FloatingActionButton fab;
+    ImageButton  fab;
 
     RecyclerView contactListView;
     ContactListAdapter contactListAdapter;
