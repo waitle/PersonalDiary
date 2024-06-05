@@ -3,6 +3,7 @@ package com.softengnier.personaldiary;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.net.MalformedURLException;
 
 public class WebSearch_View extends AppCompatActivity {
 
@@ -52,14 +55,7 @@ public class WebSearch_View extends AppCompatActivity {
             }
         });
 
-        webView.setWebViewClient(new WebViewClient(){
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                view.loadUrl(request.getUrl().toString());
-                return true;
-            }
-        });
+        webView.setWebViewClient(webViewClient);
 
     }
     @Override
@@ -78,4 +74,20 @@ public class WebSearch_View extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+    private WebViewClient webViewClient = new WebViewClient() {
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view,url,favicon);
+            try {
+                urlInput.setText(url);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            view.loadUrl(request.getUrl().toString());
+            return false; // then it is not handled by default action
+        }
+    };
 }
